@@ -23,12 +23,48 @@
 •	Выставление оценки товару  
 
 ## 3. В БД присутствуют следующие сущности:  
-•	Product – товар, который располагается на сайте. Имеет id, title, description, image, price, rate как поля и category_id, sizes_id, discount_id как foreign key.  
-•	Category – категория товаров. 
+•	Product – товар, который располагается на сайте.
+    product_id int (PK), 
+    category_id int NOT NULL (FK1),
+    discount_id int NOT NULL (FK2),
+    size_id int NOT NULL (FK3),
+    title varchar(100) NOT NULL,
+    description varchar(100) NOT NULL, 
+    image varchar(100) NOT NULL, 
+    price int NOT NULL, 
+     
+•	Category – категория товаров.
+    category_id int (PK),
+    title varchar(30) NOT NULL
+    
 •	Size – размеры и их количество.  
-•	Discount – размер скидки.  
-•	User – пользователь приложения. Имеет id, firstname, lastname, password, phone, email как поля и permission_id как foreign key.  
-•	Permission – уровень доступа пользователя на сайте. Может быть обычный пользователь(user) и админ(admin).  
-•	ProductCart – продукт, который лежит в корзине. Отличается от Product тем, что содержит конкретный размер и количество.  
-•	Cart – корзина с покупками пользователя. Имеет user_id и product_cart_id.  
+    size_id int (PK),
+    size varchar(6) NOT NULL,
+    quantity int NOT NULL
+    
+•	Discount – размер скидки.
+    discount_id int (PK),
+    discount int NOT NULL
+    
+•	User – пользователь приложения. 
+    user_id int (PK)
+    permission_id int NOT NULL (PK),
+    firstname varchar(100) NOT NULL,
+    lastname varchar(100), 
+    password varchar(100) NOT NULL,
+    phone varchar(100),
+    email varchar(50) NOT NULL 
+    
+•	Permission – уровень доступа пользователя на сайте. Может быть обычный пользователь(user) и админ(admin).
+    permission_id int (PK)
+    title varchar(30) NOT NULL
+•	Orders
+    order_id int (PK),
+    user_id int NOT NULL (FK1),
+    product_id int NOT NULL (FK2)
+    
+•	Cart – корзина с покупками пользователя.
+    card_id int (PK),
+    user_id not NOT NULL (FK1),
+    product_id NOT NULL (FK2)
 
