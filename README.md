@@ -78,5 +78,15 @@
 •	Cart – корзина с покупками пользователя.  
     cart_id int (PK) - id заказа с покупками пользователя,  
     user_id not NOT NULL (FK1) - id пользователя,  
+    product_id NOT NULL (FK2) - id товара
+    
+•	Product & Cart – корзина с покупками пользователя.  
+    id (PK) - id связи продукта и корзины  
+    cart_id int (FK1) - id заказа с покупками пользователя,  
     product_id NOT NULL (FK2) - id товара  
+
+•	Product & order – корзина с покупками пользователя.  
+    id (PK) - id связи продукта и заказа  
+    order_id int (FK1) - id заказа с покупками пользователя,        
+    product_id NOT NULL (FK2) - id товара         
 
