@@ -1,70 +1,82 @@
-# DB_2022
-## 1.	Тема разрабатываемого в семестре проекта:
-Интернет магазин
+# DB_2022  
+## 1.	Тема разрабатываемого в семестре проекта:  
+Интернет магазин  
 
-## 2.	Функциональные требования к проекту:
+## 2.	Функциональные требования к проекту:  
 В программе существует 2 вида пользователей: администратор (admin), покупатель (user).  
 Доступные всем команды:  
-•	Регистрация  
+•	Регистрация   
 •	Вход  
 •	Просмотр списка товаров  
 
 ## 1.	Администратор:  
 •	Просмотр списка всех сделок  
 •	Изменение статуса «Есть в наличии»  
-•	Добавление новых моделей  
+•	Добавление новых товаров  
+•	Удаление товаров   
 •	Добавление новых категорий  
-•	Добавление количества товаров  
+•	Удаление категорий  
+•	Добавление новых размеров  
+•	Удаление размеров   
+•	Добавление новых скидок  
+•	Удаление скидок  
+•	Просмотр наличия товара на складе  
 
 ## 2.	Покупатель  
-•	Возможность приобрести товар  
-•	Просмотр суммы, потраченной на покупку  
-•	Просмотр истории своих заказов  
-•	Выставление оценки товару  
+•	Возможность добавление товара в корзину  
+•	Возможность удаления товара из корзины  
+•	Возможность оформления заказа  
+•	Возможность удаления товара из заказа      
+•	Возможность оплаты заказа  
+•	Возможность отмены заказа  
+•	Просмотр корзины  
+•	Просмотр заказа  
+•	Просмотр истории своих заказов       
   
 ## 3. В БД присутствуют следующие сущности:  
-•	Product – товар, который располагается на сайте.
-    product_id int (PK),   
-    category_id int NOT NULL (FK1),  
-    discount_id int NOT NULL (FK2),  
-    size_id int NOT NULL (FK3),  
-    title varchar(100) NOT NULL,  
-    description varchar(100) NOT NULL,   
-    image varchar(100) NOT NULL,     
-    price int NOT NULL,   
+•	Product – товар, который располагается на сайте.  
+    product_id int (PK) - id товара,  
+    category_id int NOT NULL (FK1) - id категории товара,  
+    discount_id int NOT NULL (FK2) - id скидки, которая распространяется на товар,  
+    size_id int NOT NULL (FK3) - id размера товара,  
+    title varchar(100) NOT NULL - название товара,   
+    description varchar(100) NOT NULL - описание товара,  
+    image varchar(100) NOT NULL - изображение товара,  
+    price int NOT NULL - стоимость товара,  
        
 •	Category – категория товаров.  
-    category_id int (PK),  
-    title varchar(30) NOT NULL    
-      
+    category_id int (PK) - id категории товара,  
+    title varchar(30) NOT NULL - название категории товара   
+   
 •	Size – размеры и их количество.  
-    size_id int (PK),  
-    size varchar(6) NOT NULL,  
-    quantity int NOT NULL  
+    size_id int (PK) - id размера товара,  
+    size varchar(6) NOT NULL - размер товара,  
+    quantity int NOT NULL - количество товаров данного размера  
     
 •	Discount – размер скидки.  
-    discount_id int (PK),  
-    discount int NOT NULL  
+    discount_id int (PK) - id скидки товара,  
+    discount int NOT NULL - скидка товара  
       
-•	User – пользователь приложения.   
-    user_id int (PK)  
-    permission_id int NOT NULL (PK),  
-    firstname varchar(100) NOT NULL,  
-    lastname varchar(100),  
-    password varchar(100) NOT NULL,  
-    phone varchar(100),  
+•	User – пользователь приложения.  
+    user_id int (PK) - id пользователя   
+    permission_id int NOT NULL - id уровня доступа пользователя,    
+    firstname varchar(100) NOT NULL - имя пользователя,  
+    lastname varchar(100) - фамилия пользователя,  
+    password varchar(64) NOT NULL - пароль пользователя,  
+    phone varchar(15) - номер телефона пользователя,  
     email varchar(50) NOT NULL   
       
 •	Permission – уровень доступа пользователя на сайте. Может быть обычный пользователь(user) и админ(admin).  
-    permission_id int (PK)  
-    title varchar(30) NOT NULL  
+    permission_id int (PK) - id уровня доступа пользователя,   
+    title varchar(30) NOT NULL - уровень доступа пользователя  
+    
 •	Orders  
-    order_id int (PK),  
-    user_id int NOT NULL (FK1),  
-    product_id int NOT NULL (FK2)  
+    order_id int (PK) - id заказа,  
+    user_id int NOT NULL (FK1) - id пользователя,  
+    product_id int NOT NULL (FK2) - id товара   
       
 •	Cart – корзина с покупками пользователя.  
-    card_id int (PK),  
-    user_id not NOT NULL (FK1),  
-    product_id NOT NULL (FK2)  
+    cart_id int (PK) - id заказа с покупками пользователя,  
+    user_id not NOT NULL (FK1) - id пользователя,  
+    product_id NOT NULL (FK2) - id товара  
 
